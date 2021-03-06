@@ -1,14 +1,16 @@
 # contact-form
 
-Mainly focused on 
-.matching the theme [mostly not responsive]
-.reactive form - with form validations like required, email with default email validator and phone number with Regex
+Mainly focused on
+
+matching the theme [mostly not responsive]
+
+reactive form - with form validations like required, email with default email validator and phone number with Regex
 
 ## Build
-npm install
+`npm install`
 
 ## Run
-ng serve
+`ng serve`
 
 ## Screenshots
 
