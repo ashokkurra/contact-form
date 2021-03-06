@@ -1,0 +1,68 @@
+<div class="container">
+  <div class="container-row">
+    <div class="container-column title-side">
+      <h2 class="mat-title text-primary">REVIEW YOUR APPLICATION</h2>
+      <h1 class="mat-display-2 text-primary">Confirm your contact details</h1>
+      <p class="mat-subheading-1">We'll use these details if we need to get in touch about your coverage.</p>
+    </div>
+    <div class="container-column">
+      <form class="contact-form" [formGroup]="contactForm" (ngSubmit)="contactSubmit()">
+        <div class="form-styling">
+          <h2 class="mat-title text-primary">Your contact info</h2>
+          <mat-form-field class="control-half" appearance="fill">
+            <mat-label>First name</mat-label>
+            <input matInput formControlName="firstName" autofocus>
+            <mat-error *ngIf="contactForm?.controls?.firstName.hasError('required')">
+              First name is <strong>required</strong>
+            </mat-error>
+          </mat-form-field>
+          <mat-form-field class="control-half" appearance="fill">
+            <mat-label>Last name</mat-label>
+            <input matInput formControlName="lastName">
+            <mat-error *ngIf="contactForm?.controls?.lastName.hasError('required')">
+              Last name is <strong>required</strong>
+            </mat-error>
+          </mat-form-field>
+          <mat-form-field class="control-full" appearance="fill">
+            <mat-label>Email address</mat-label>
+            <input type="email" matInput formControlName="emailAddress" placeholder="Ex. jane@email-server.com">
+            <mat-error
+              *ngIf="contactForm?.controls?.emailAddress.hasError('email') && !contactForm?.controls?.emailAddress.hasError('required')">
+              Please enter a valid email address
+            </mat-error>
+            <mat-error *ngIf="contactForm?.controls?.emailAddress.hasError('required')">
+              Email address is <strong>required</strong>
+            </mat-error>
+          </mat-form-field>
+          <mat-form-field class="control-full" appearance="fill">
+            <mat-label>Phone number</mat-label>
+            <span matPrefix>+1 &nbsp;</span>
+            <input matInput formControlName="phoneNumber" placeholder="Ex. (202) 123-4567">
+            <mat-error
+              *ngIf="contactForm?.controls?.phoneNumber.hasError('pattern') && !contactForm?.controls?.phoneNumber.hasError('required')">
+              Please enter a valid phone number
+            </mat-error>
+            <mat-error *ngIf="contactForm?.controls?.phoneNumber.hasError('required')">
+              Phone number is <strong>required</strong>
+            </mat-error>
+          </mat-form-field>
+        </div>
+        <button class="submit-button" mat-flat-button color="primary">NEXT</button>
+      </form>
+    </div>
+  </div>
+  <mat-list class="container-row" *ngIf="contactFormValues" role="list">
+    <mat-list-item role="listitem">
+      <span class="text-secondary">First name: {{contactFormValues.firstName}}</span>
+    </mat-list-item>
+    <mat-list-item role="listitem">
+      <span class="text-secondary">Last name: {{contactFormValues.lastName}}</span>
+    </mat-list-item>
+    <mat-list-item role="listitem">
+      <span class="text-secondary">Email address: {{contactFormValues.emailAddress}}</span>
+    </mat-list-item>
+    <mat-list-item role="listitem">
+      <span class="text-secondary">Phone Number: {{contactFormValues.phoneNumber}}</span>
+    </mat-list-item>
+  </mat-list>
+</div>
